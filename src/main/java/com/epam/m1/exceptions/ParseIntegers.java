@@ -16,16 +16,34 @@ public class ParseIntegers {
                             .split(" "));
 
     public static void main(String[] args) {
-        Iterator<String> words = WORDS.iterator();
-        int sum = 0;
-        String justWords = "";
-        while (words.hasNext()) {
-            String next = words.next();
-            int number = Integer.parseInt(next);
-            // todo: complete it
-        }
-        System.out.println("Sum is " + sum);
-        System.out.println("Just words:" + justWords);
+
+            Iterator<String> words = WORDS.iterator();
+            int sum = 0;
+            String justWords = "";
+            while (words.hasNext()) {
+                String next = words.next();
+                boolean stringCheck = Character.isDigit(next.charAt(0));
+                if (stringCheck) {
+
+                    // todo: complete it
+                    int num;
+                    try {
+                        num = Integer.parseInt(next);
+                    }
+                    catch (NumberFormatException e){
+                       throw new IllegalStateException("NumberFormatException");
+                    }
+                    sum += num;
+                } else {
+                    justWords += " " + next;
+                }
+
+            }
+            System.out.println("Sum is " + sum);
+            System.out.println("Just words:" + justWords);
+
+
     }
+
 }
 
